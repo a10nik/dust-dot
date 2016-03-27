@@ -1,11 +1,12 @@
-from python:3
+from haskell:7
 
 add /og-service /og-service
 
 workdir /og-service
 
-run pip install -r requirements.txt
+run stack build
 
 expose 9090
 
-cmd ["python3", "./server.py"]
+cmd ["stack", "exec", "og-service"]
+
