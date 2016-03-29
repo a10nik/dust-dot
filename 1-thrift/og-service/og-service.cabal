@@ -25,20 +25,10 @@ executable og-service
                        vector,
                        bytestring,
                        network,
-                       QuickCheck
-
-executable og-client
-  hs-source-dirs:      src, gen-hs
-  main-is:             Client.hs
-  default-language:    Haskell2010
-  build-depends:       base >= 4.7 && < 5,
-                       thrift == 0.9.3,
-                       containers,
-                       text,
-                       hashable,
-                       unordered-containers,
-                       vector,
-                       bytestring,
-                       network,
-                       network-uri,
-                       QuickCheck
+                       QuickCheck,
+                       http-conduit,
+                       http-types,
+                       xml-conduit,
+                       html-conduit,
+                       resourcet,
+                       conduit

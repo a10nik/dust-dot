@@ -1,0 +1,38 @@
+<h1>Inspect OG Headers</h1>
+
+<%= form_tag(nil, method: "get", class: "form") do %>
+    <%= label_tag(:url, "Enter URL to inspect:") %>
+    <%= text_field_tag(:url) %>
+    <%= submit_tag("Inspect", {class: "btn"}) %>
+<% end %>
+
+<% if @error %>
+  <div class="alert alert-danger">
+    Error occurred while trying to process site <b><%= @url %></b>: <br/>
+    <%= print_error(@error) %>
+  </div>
+<% else %>
+  <% if @info %>
+      <table class="table">
+          <caption> Parsed OG data on site <b><%= @url %></b> </caption>
+          <tbody>
+              <tr>
+                  <th scope="row">Title</th>
+                  <td><%= @info.title %></td>
+              </tr>
+              <tr>
+                  <th scope="row">Type</th>
+                  <td><%= @info.type %></td>
+              </tr>
+              <tr>
+                  <th scope="row">Image</th>
+                  <td><%= @info.image %></td>
+              </tr>
+              <tr>
+                  <th scope="row">Url</th>
+                  <td><%= @info.url %></td>
+              </tr>
+          </tbody>
+      </table>
+  <% end %>
+<% end %>
