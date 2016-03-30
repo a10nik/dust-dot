@@ -33,17 +33,20 @@ To run this one, you'll need:
 After you gather all required ingredients, come to a sacred stone and whisper:
 
 ``cd dust-dot/1-thrift/
+
 sh thrift-get.sh``
 
 After that you'll get your thrift-files generated and placed accordingly. Now you'll be able to:
 
 
 ``cd dust-dot/1-thrift/og-service
+
 stack exec og-service # to run the Haskell part``
 
 and 
 
 ``cd dust-dot/1-thrift/og-app
+
 bin/rails server # to run the Ruby part``
 
 To deploy you'll need:
@@ -56,6 +59,7 @@ Having all this stuff meticulously installed and logged into heroku, replace the
 in ``dust-dot/1-thrift/heroku.sh`` with your heroku app name of choice and run the script
 
 ``cd dust-dot/1-thrift
+
 sh heroku.sh``
 
 ###Running example
