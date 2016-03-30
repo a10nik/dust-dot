@@ -57,3 +57,7 @@ in ``dust-dot/1-thrift/heroku.sh`` with your heroku app name of choice and run t
 
 ``cd dust-dot/1-thrift
 sh heroku.sh``
+
+###Running example
+
+If you are lucky, you'll see it deployed to [my heroku app](http://dust1-og-app.herokuapp.com/)
