@@ -104,14 +104,18 @@ getTransport s = do
 
 main :: IO ()
 main = do
-  portEnv <- lookupEnv "PORT"
-  let port = getPort portEnv
+  hSetBuffering stdout NoBuffering
+  print "starting og-service Main"
+  args <- getArgs
+  let port = getPort $ maybeHead args
   putStrLn $ "og-service: RPC listening on port " ++ show port
   doRunServer BinaryProtocol Main.getTransport port
   where
-    getPort portEnv = case portEnv of
-      Just portStr -> read portStr
-      Nothing -> 9090
+    getPort (Just portStr) = read portStr
+    getPort Nothing = 9090
+
+    maybeHead [] = Nothing
+    maybeHead (x:_) = Just x
 
     acceptor p f socket = do
       t <- f socket
