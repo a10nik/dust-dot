@@ -40,8 +40,10 @@ sh thrift-get.sh
 After that you'll get your thrift-files generated and placed accordingly. Now you'll be able to:
 
 
-``cd dust-dot/1-thrift/og-service
-stack exec og-service # to run the Haskell part``
+```bash
+cd dust-dot/1-thrift/og-service
+stack exec og-service # to run the Haskell part
+```
 
 and 
 
