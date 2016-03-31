@@ -20,7 +20,7 @@ your computer during the full moon with you dancing in circles around it.
 And all that just to happily run it merely twice per the whole project's lifetime for it
 to generate some painful-to-load sources, that you could probably have written yourself already.
 Luckily, there is a [Docker](https://www.docker.com/)-image that
-contains a runnable version of Thrift that was bestowed to us by some selfless people having marched through all
+contains a runnable version of Thrift that was granted to us by some selfless people having marched through all
 these rings of hell for the greater good of their fellow developers like me.
 
 To make a long story short, I'll be using this image to generate Thrift-specific sources for both apps.
@@ -40,7 +40,7 @@ cd dust-dot/1-thrift/
 sh thrift-get.sh
 ```
 
-After that you'll get your thrift-files generated and placed accordingly. Now you'll be able to:
+Now that you've got your Thrift-files generated and placed accordingly, you'll be able to:
 
 
 ```bash
