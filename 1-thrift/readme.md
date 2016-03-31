@@ -1,5 +1,8 @@
+###Running example
+If you are lucky, you'll see the app deployed to [my heroku](http://dust1-og-app.herokuapp.com/)
+
 ###What does it do
-It parses 4 main [OpenGraph](http://ogp.me/) headers of the site fed into it
+It parses 4 main [OpenGraph](http://ogp.me/) headers of a site fed into it
 
 ###Structure
 Consists of 2 apps:
@@ -66,6 +69,3 @@ cd dust-dot/1-thrift
 sh heroku.sh
 ```
 
-###Running example
-
-If you are lucky, you'll see it deployed to [my heroku app](http://dust1-og-app.herokuapp.com/)
