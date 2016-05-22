@@ -1,0 +1,33 @@
+{
+  "name": "2-rest-voting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect": "^3.4.1",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
+    "express-logger": "0.0.3",
+    "express-winston": "^1.3.1",
+    "guid": "0.0.12",
+    "jsonwebtoken": "^6.2.0",
+    "url-parse": "^1.1.1",
+    "winston": "^2.2.0"
+  },
+  "engines": {
+    "node": "6.x"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "co-request": "^1.0.0",
+    "co-mocha": "^1.1.2",
+    "mocha": "^2.4.5"
+  }
+}
