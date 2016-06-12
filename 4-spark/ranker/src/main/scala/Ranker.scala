@@ -1,4 +1,5 @@
 import org.apache.spark.{SparkConf, SparkContext}
+import org.slf4j._
 import org.tartarus.snowball.ext.{englishStemmer => EngStemmer, russianStemmer => RusStemmer}
 
 import scala.concurrent.duration.durationToPair
@@ -60,7 +61,7 @@ object Utils {
 
 object Ranker extends App {
   import Utils._
-
+  val log = LoggerFactory.getLogger("Ranker")
   val conf = new SparkConf().setAppName("Ranker Application")
   val sc = new SparkContext(conf)
   val queryLn = Source.fromFile("query.txt", "UTF-8").mkString
@@ -71,11 +72,11 @@ object Ranker extends App {
   val fileStats = sc.wholeTextFiles("opencorpora/")
     .mapValues(getStat)
     .cache()
-  println(f"Got file stats")
+  log.info(f"Got file stats")
   val avgLen = fileStats
     .map { case (_, stat) => stat.length }
     .mean
-  println(f"Got avg len: $avgLen")
+  log.info(f"Got avg len: $avgLen")
   val countsOfFilesWithQueryWords = fileStats
     .values
     .flatMap(s => query.map(qWord => (qWord, if (s.wordCount.contains(qWord)) 1L else 0L)))
@@ -83,10 +84,10 @@ object Ranker extends App {
     .collect
     .toMap
     .withDefault(_ => 0L)
-  println(f"Got query terms counts: $countsOfFilesWithQueryWords")
+  log.info(f"Got query terms counts: $countsOfFilesWithQueryWords")
   val filesWithScores = fileStats
     .mapValues(st => bm25score(query, st, fileNames.length, countsOfFilesWithQueryWords, avgLen))
     .top(10)(Ordering.by { case (_, score) => score })
-  println(filesWithScores.toSeq)
+  println(f" result ${filesWithScores.toSeq}")
   sc.stop()
 }
