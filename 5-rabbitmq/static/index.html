@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel=stylesheet href="/lib/metricsgraphics.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+	    <link href='https://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+	    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Stats</title>
+    </head>
+    <body>
+        <h1>Hello World</h1>
+        <div id="cpu_chart"/>
+        <div id="ram_chart"/>
+	
+		<script src="/lib/jquery.js"></script>
+		<script src="/lib/d3.js"></script>
+        <script src="/lib/metricsgraphics.js"></script>
+        <script type="text/javascript">
+        	function update() {
+	        	d3.json('/stats', function(stats) {
+	        		var data = stats.data;
+	        		var legend = stats.legend;
+	    			data.forEach(function(ch) {
+	    				ch.forEach(function(message) {
+							message.time = new Date(message.time * 1000);
+	    				})
+	    			});
+				    MG.data_graphic({
+				        title: "CPU",
+				        data: data,
+				        target: document.getElementById('cpu_chart'),
+				        legend: legend,
+				        width: $(window).width() - 200,
+				        x_accessor: 'time',
+				        y_accessor: 'cpu'
+				    });
+				    MG.data_graphic({
+				        title: "RAM",
+				        data: data,
+				        target: document.getElementById('ram_chart'),
+				        legend: legend,
+				        width: $(window).width() - 200,
+				        x_accessor: 'time',
+				        y_accessor: 'ram'
+				    });
+				});
+        	}
+        	update();
+        </script>
+    </body>
+</html>
