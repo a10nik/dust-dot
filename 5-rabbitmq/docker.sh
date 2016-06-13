@@ -6,3 +6,5 @@ docker run -d --hostname my-rabbit --name some-rabbit rabbitmq:3.6
 docker rm -f pika
 docker build -t pika .
 docker run --name pika --link some-rabbit:rabbit -p 80:80 -t pika sh run-stats.sh
+docker rm -f pika
+docker rm -f some-rabbit
